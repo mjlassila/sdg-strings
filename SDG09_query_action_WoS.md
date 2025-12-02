@@ -78,6 +78,36 @@ TS=
 )
 
 ```
+```whoosh
+(
+	("advance" OR "advancing" OR "develop" OR "developing" OR "enhanc*" OR "foster*" OR "improv*" OR "invent" OR "inventing" OR "moderni*" OR "upgrad*" OR "strengthen*" OR "better" OR "build" OR "encourag*" OR "promot*" OR "plan" OR "planning"
+	)  
+		~15 
+		(
+            ("reliabl*" OR "sustainab*" OR "resilien*" OR "invulnerab*" OR "adaptab*" OR "flexib*" OR "recoverab*" OR "maintainable*" OR "renewabl*" OR "resource-efficien*" OR "repairab*" OR "recyclab*" OR "reusab*" OR "ecofriendly" OR "eco-friendly" OR "environmentally friendly" OR "environmentally sound" OR "ecologically friendly" OR "ecologically sound" OR "low* carbon" 
+		    OR "green" OR "eco" OR "ecological" OR "nonpolluting" OR "energy-efficient"
+		    ) 
+			    ~5 
+                ("infrastruct*" OR (("energy" OR "power") ~1 ("infrastruct*" OR "supply" OR "infrastruct*" OR "supply" OR "solution$" OR "source*")) 
+                OR "energy system$" OR "power system$" 
+                OR "electrification" OR "electric* transmission" OR "electric* distribution" OR "electric* connections" OR "lighting" 
+                OR (("waste" OR "wastewater$" OR "sewage") ~1 ("treatment" OR "collection" OR "management")) OR "recycling system$" 
+                OR "water supply" OR "drinking water" OR "clean water" OR "sanitation" OR "drainage system$" OR "water and sanitation system$" OR "food supply"
+                OR "telecommunication$" OR "digital communications" OR "communication$" OR "digital solutions" OR "internet" OR "mobile network$"
+                OR "public amenities" OR "rule of law" OR "juridical system$" OR "legal services" OR "financial service$" OR "banking service$" OR "education" OR "school$" 
+                OR "health care" OR "healthcare" 
+                OR "buildings" OR "housing" OR "public spaces" OR "disaster management" 
+                OR "air connection*" OR "airports" OR "border crossing" OR "freight*" OR "harbor*" OR "harbour*" OR "highway*" OR "maritime" OR "mass transit*" OR "mobility system$" 
+                OR "public transport*" OR "public transit*" OR "ports" OR "rail" OR "rails" OR "railway*" OR "road" OR "roads" OR "rural access" OR "sea connection*" OR "sea route*" 
+                OR "ship* route*" OR "transport" OR "transportation" OR "tunnel$" OR "urban mobility" OR "waterways" 
+                )
+        ) 
+				    ~5 
+				    ("afford*" OR "equitab*" OR "equality" OR "equity" OR "low cost" OR "inexpensive" OR "reasonable" OR "moderate" OR "fair" OR "accessib*" OR "economical" OR "cost-effective*"
+				    )
+)
+```
+
 
 
 ### Target 9.2
@@ -124,6 +154,26 @@ TS=
 
 )
 ```
+```whoosh
+(
+    (("advancing" OR "boost" OR "encourage*" OR "enhance*" OR "facilitat*" OR "foster*" OR "promot*" OR "support*"OR "legislat*" OR "govern*" OR "strateg*" OR "policy" OR "policies" OR "framework$" OR "program*"
+    )
+	    ~10
+	    (   
+            ("inclusiv*" OR "participatory" OR (("worker" OR "employee") ~1 ("participation" OR "equity"OR "reasonableness" OR "fairness" OR        "justice"))  OR "equal opportunit*" OR "equitab*" OR "equality" OR "inclusion" OR "social responsibility" 
+	        OR "sustainab*" OR "renewabl*" OR "resource-efficien*" OR "repairab*" OR "recyclab*" OR "ecofriendly" OR "eco-friendly" OR "environmentally friendly" OR "environmentally sound" 
+	        OR "ecologically friendly" OR "ecologically sound" OR "low* carbon" OR "green" OR "eco" OR "ecological" OR "nonpolluting" OR "non-pollut*" OR "energy-efficient" OR "energy-saving"
+            ) 
+		    ~5 ("industrialisat*" OR "industrializat*" OR "industrial sector$" OR "industrial development" OR "development of industry" OR "industrial transformation" OR "industrial expansion")
+            )
+        ) 
+    OR 
+        (("advancing" OR "boost" OR "encourage*" OR "enhance*" OR "facilitat*" OR "foster*" OR "promot*" OR "support*") ~5 ("ecoindustrial development" OR "eco-industrial development" )
+    )
+
+)
+```
+
 
 #### Phrase 2
 This phrase is about increasing the share of industry in economic growth and employment. Basic structure is *action + industry + economic growth/employment*.
@@ -150,6 +200,29 @@ TS=(
 
 )
 ```
+```whoosh
+(
+    (
+        ("improv*" OR "increase*" OR "expand" OR "expansion*" OR "accelerat*" OR "advance" OR "advancing" OR "facilitat*" OR "promot*" OR "add" 
+	    OR "raise" OR "raising" OR "raised" OR "boost*" OR "ensure" 
+	    OR (("overcome" OR "reduce" OR "reducing" OR "decreas*" OR "avoid*" OR "prevent*") ~1 ("barrier$" OR "inaccessib*" OR "hindrance$" OR "obstacle$"))
+        )
+	        ~5
+	            (("industrial sector$" OR "industry" OR "industries" OR "manufacturing")
+		        ~3 
+		            ("employment" OR "job$" OR ("share" ~1 ("workers" OR "workplace*" OR "work place*")) OR "labor force" OR "labour force" 
+		            OR "gross domestic product" OR "GDP" 
+		            OR (("economic*" OR "economy") ~2 ("growth" OR "output$" OR "performance*")) 
+		            )
+                )
+    )
+	OR 
+    (("industrial sector$" OR "industry" OR "industries" OR "manufacturing") ~3 (("decreas*" OR "diminis*" OR "cut" OR "reduce") ~1 ("unemployment"))
+    )
+
+)
+```
+
 
 ### Target 9.3
 
@@ -200,6 +273,28 @@ TS=
             )
 )
 ```
+```whoosh
+(
+	("improv*" OR "increase*" OR "strengthen*" OR "enhance*" OR "better" OR "expand" OR "expansion*" OR "accelerat*" OR "advance" OR "advancing" OR "facilitat*" OR "promot*" OR "raise" OR "raising" OR "raised" OR "boost*" OR "ensure" 
+	OR (("overcome" OR "reduce" OR "reducing" OR "decreas*" OR "avoid*" OR "prevent*") ~1 ("barrier$" OR "inaccessib*" OR "hindrance$" OR "obstacle$")) 
+	OR (("enact*" OR "amend*" OR "develop*" OR "reform*" OR "implement*" OR "improv*" OR "ratif*" OR "strengthen") ~3 ("agreement$" OR "convention" OR "directive" OR "framework$" OR "governance" OR "initiative$" OR "instrument$" OR "juridic*" OR "law$" OR "legal*" OR "legislat*" OR "policy" OR "policies" OR "principle$" OR "ratification*" OR "regulat*" OR "rule" OR "rules"))
+	)
+        ~5
+		("long-term finance*" OR "loan$" OR "lend* fund$" OR "lending" OR "credit$" OR "debt$" OR "financial instrument*" OR "microfinanc*" OR "micro-financ*" 
+        OR "microinsurance" OR "micro-insurance" OR "microcredit" OR "micro-credit" OR "microloan$" OR "micro-loan$" OR "banks" OR "a bank" OR "banking" OR "bank account$" 
+        OR "digital finance" OR "mobile money" OR "digital currency" OR "electronic payments" OR "digital payment$" OR "fintech" OR "mobile phone-based payment" OR "mobile payment" OR "mobile wallet" OR "entrepreneurial finance" 
+        OR "savings" OR "insurance" OR (("deposit" OR "withdraw" OR "transfer" OR "save" OR "borrow") ~1 ("currency" OR "money"))
+        OR "payment service$" OR "transfer service$" OR "transfer funds" OR "financial inclusion" OR "M-PESA"
+        OR (("financial" OR "monetary") ~1 ("asset*" OR "opportunity*" OR "resource*" OR "service*")) 
+        OR (("advice" OR "training") ~2 ("business" OR "company"))
+		)
+            ~5
+            (("small" OR "small-scale" OR "micro" OR "micro-scale") ~1 ("enterprise*" OR "business*" OR "industry" OR "industri*" OR "firm$" OR "company" OR "companies" OR "venture*") 
+            OR "microenterprise$" OR "microbusiness*" OR "micro and small enterprise$" OR "MSEs" OR "micro- and small-scale enterprise$" OR "small and micro business*"
+            )
+)
+```
+
 #### Phrase 2
 This phrase is about increasing the integration of small-scale enterprises to value chains/market entry. Basic structure is *action + small-scale enterprises + value chains/market entry*.
 
@@ -222,6 +317,25 @@ TS=
 
 )
 ```
+```whoosh
+(
+    ("increas*" OR "strengthen*" OR "improv*" OR "enhanc*" OR "better" OR "scal* up" OR "build*" OR "expand" OR "expansion*" OR "advance" OR "advancing" OR "facilitat*" OR "promot*" OR "raise" OR "raising" OR "raised" OR "foster*" OR "boost*"
+	OR (("overcome" OR "reduce" OR "reducing" OR "decreas*") ~3 ("trade costs" OR "barrier$" OR "inaccessib*" OR "hindrance$" OR "obstacle$"))
+    )
+ 		~10
+		((("small" OR "small-scale" OR "micro" OR "micro-scale") ~1 ("enterprise*" OR "business*" OR "industry" OR "industri*" OR "firm$" OR "company" OR "companies" OR "venture*")) 
+		OR "microenterprise$" OR "microbusiness*" OR "micro and small enterprise$" OR "MSEs" OR "micro- and small-scale enterprise$" OR "small and micro business*" 
+		)
+		    ~5
+		    ("value chain$" OR "production chain$" OR "supply chain$" OR "distribution chain$" OR "logistics chain$" OR "marketing chain$" OR "GVC*" OR "production network$" OR "processing chain$" 
+		    OR "retail chain$" OR "delivery chain$" OR " global commodity chain$" OR "supply network*" OR "material chain$" OR "global factory" OR "export*" OR "import" OR "market" OR "markets"  
+		    OR "cross-border business*" OR 
+			(("international*" OR "local" OR "global" OR "globally" OR "regional*" OR "provincial*" OR "domestic") ~3 ("networks" OR "business*" OR "trade"))
+            )
+
+)
+```
+
 ### Target 9.4
 
 > **9.4 By 2030, upgrade infrastructure and retrofit industries to make them sustainable, with increased resource-use efficiency and greater adoption of clean and environmentally sound technologies and industrial processes, with all countries taking action in accordance with their respective capabilities**
@@ -275,6 +389,42 @@ TS=
 
 )
 ```
+```whoosh
+(
+    ("upgrad*" OR "moderniz*" OR "modernis*" OR "improv*" OR "enhance*" OR "retrofit" OR "modify" OR "rebuild" OR "overhaul" OR "leverage"
+    )
+	~15 
+        ("sustainab*" OR "resilien*" OR "adaptab*" OR "flexib*" OR "maintainable*" OR "renewabl*" OR "resource-efficien*" OR "repairab*" 
+	    OR "recyclab*" OR "reusab*" OR "ecofriendly" OR "eco-friendly" OR "environmentally friendly" OR "environmentally sound" OR "ecologically friendly" OR "ecologically sound" OR "low* carbon" 
+	    OR "green" OR "eco" OR "ecological" OR "nonpolluting" OR "energy-efficient"
+        ) 
+	    ~5 
+        (
+            ("industry" OR "industries" OR "manufacturer$" OR "industrial sector$"
+            OR "infrastruct*" OR (("energy" OR "power") ~1 ("infrastruct*" OR "supply" OR "solution$" OR "source*")) 
+            OR "energy system$" OR "power system$" 
+            OR "electrification" OR "electric* transmission" OR "electric* distribution" OR "electric* connections" OR "electric* production" OR "lighting" 
+            OR (("waste" OR "wastewater$" OR "sewage") ~1 ("treatment" OR "collection" OR "management")) OR "recycling system$" 
+            OR "water supply" OR "drinking water" OR "clean water" OR "sanitation" OR "drainage system$" OR "water and sanitation system$" OR "food supply"
+            OR "telecommunication$" OR "digital communications" OR "communication$" OR "digital solutions" OR "internet" OR "mobile network$"
+            OR "public amenities" OR "rule of law" OR "juridical system$" OR "legal services" OR "financial service$" OR "banking service$" OR "education" OR "school$" 
+            OR "health care" OR "healthcare" 
+            OR "buildings" OR "housing" OR "public spaces" OR "disaster management" 
+            OR "mass transit*" OR "mobility system$" OR "public transport*" OR "public transit*" OR "transport" OR "transportation" OR "urban mobility" OR "road" OR "roads"
+            ) 
+	        ~5
+		    (
+                (("resourse$" OR "water" OR "material$" OR "energy") ~1 ("efficien*" OR "sustainable" OR "optimi$ation")) 
+                OR "eco-efficien*" OR "circular econom*" OR "circularity" OR "closed-loop economy" 
+                OR "industrial ecology" OR "cradle to cradle" OR "cradle-to-cradle"
+                OR (("sustainab*" OR "environmental*" OR "ecological*" OR "eco" OR "green" OR "clean" OR "cleaner") ~1 ("technolog*" OR "practice$" OR "production" OR "process*")) 
+		        OR (("footprint" OR (("lifecycle$" OR "life-cycle$") ~1 "cost$")) ~3 ("decreas*" OR "minimi*" OR "reduc*" OR "restrict*" OR "lower" OR "lower$" OR "lowered"))
+		    )
+        )
+
+)
+```
+
 
 ### Target 9.5
 
@@ -307,6 +457,20 @@ TS=
     ) 
 ) 
 ```
+```whoosh
+(
+     ("upgrad*" OR "improv*" OR "better" OR "enhanc*" OR "promot*" OR "encourag*" OR "improv*" OR "legislat*" OR "governance" OR "strateg*" OR "policy" OR "policies" OR "framework$" OR "program*" 
+     ) 
+     ~5
+      ( ("research" OR "innovation*" OR "R&D" OR "R & D" OR "research and development" OR "research & development" OR "technology" OR "technological capabilities" 
+        ) 
+      ~5 
+      ("industr*" OR "capacity" OR "capabilit*" OR "sector*" OR "institutions" OR "national" OR "regional" OR "worker*" OR "workforce" OR "researcher$" OR "invest*" OR "financ*" OR "fund*" OR "spending*" OR "expend*" OR "expense*" OR "GDP" OR "subsidy" OR "subsidi*" 
+      )
+    ) 
+)
+```
+
 
 ### Target 9.a
 
@@ -351,6 +515,37 @@ TS=
     )    
 ) 
 ```
+```whoosh
+( 
+        ("facilitat*" OR "promot*" OR "assist"
+        )  
+    AND 
+        (("reliabl*" OR "sustainab*" OR "resilien*" OR "invulnerab*" OR "adaptab*" OR "flexib*" OR "recoverab*" OR "maintainable*" OR "renewabl*" OR "resource-efficien*" OR "repairab*" OR "recyclab*" OR "reusab*" OR "ecofriendly" OR "eco-friendly" OR "environmentally friendly" OR "environmentally sound" OR "ecologically friendly" OR "ecologically sound" OR "low* carbon" OR "green" OR "eco" OR "ecological" OR "nonpolluting" OR "energy-efficient"
+        )  
+            ~5 
+            ("infrastruct*" OR (("energy" OR "power") ~1 ("infrastruct*" OR "supply" OR "solution$" OR "source*")) 
+            OR "energy system$" OR "power system$" 
+            OR "electrification" OR "electric* transmission" OR "electric* distribution" OR "electric* connections" OR "electric* production"
+            OR "lighting" 
+            OR (("waste" OR "wastewater$" OR "sewage") ~1 ("treatment" OR "collection" OR "management")) OR "recycling system$" 
+            OR "water supply" OR "drinking water" OR "clean water" OR "sanitation" OR "drainage system$" OR "water and sanitation system$" 
+            OR "food supply"
+            OR "telecommunication$" OR "digital communications" OR "communication$" OR "digital solutions" OR "internet" OR "mobile network$"
+            OR "public amenities" OR "rule of law" OR "juridical system$" OR "legal services" OR "financial service$" OR "banking service$" OR "education" OR "school$" 
+            OR "health care" OR "healthcare" 
+            OR "buildings" OR "housing" OR "public spaces" OR "disaster management" 
+            OR "mass transit*" OR "mobility system$" OR "public transport*" OR "public transit*" OR "transport" OR "transportation" OR "urban mobility" OR "road" OR "roads"
+            ) 
+        ) 
+    AND 
+    ("financial support" OR "technological support" OR "technical support" OR "official development assistance" OR "ODA" OR "develop* assist*" OR "develop* aid*" OR "foreign aid*" OR "international aid*" OR "cooperation* fund*" OR "develop* spending*" OR "foreign investment" OR "foreign invest*" OR "international invest*" OR "international investment" OR "develop* invest*" OR "develop* investment" OR "foreign financ*" OR "international financ*" OR "develop* fund*" OR "foreign support*" OR "international support*" OR "foreign assist*" OR "international assist*" OR "foreign subsid*" OR "international subsid*" OR "develop* support*" OR "develop* subsid*" OR "humanitar* assist*" OR "humanitar* aid*" OR "humanitar* fund*" OR "humanitar* invest*" OR "cross-national assist*" OR "cross-national aid*" OR "cross-national fund*" OR "cross-national invest*" OR invest* OR fund* OR financ* OR "technolog* transfer*" OR "transfer of technical knowledge" OR "transfer of technolog*" 
+    ) 
+    AND 
+    ("african*" OR "magrheb" OR "maghrib" OR "west indies" OR "indian ocean islands" OR "caribbean" OR "central america" OR "latin america" OR "south america" OR "central asia" OR "north asia" OR "northern asia" OR "western asia" OR "eastern europe" OR "least developed countr*" OR "least developed nation*" OR "Angola*" OR "Benin" OR "beninese" OR "Burkina Faso" OR "burkinese" OR "burkinabe" OR "Burundi*" OR "Central African Republic" OR "Chad" OR "Comoros" OR "comoro islands" OR "iles comores" OR "Congo" OR "congolese" OR "Djibouti*" OR "Eritrea*" OR "Ethiopia*" OR "Gambia*" OR "Guinea" OR "Guinea-Bissau" OR "guinean" OR "Lesotho" OR "lesothan*" OR "Liberia*" OR "Madagasca*" OR "Malawi*" OR "Mali" OR "malian" OR "Mauritania*" OR "Mozambique" OR "mozambican*" OR "Niger" OR "Rwanda*" OR "Sao Tome and Principe" OR "Senegal*" OR "Sierra Leone*" OR "Somalia*" OR "South Sudan" OR "Sudan" OR "sudanese" OR "Togo" OR "togolese" OR "Uganda*" OR "Tanzania*" OR "Zambia*" OR "Cambodia*" OR "Kiribati*" OR "Lao People's democratic republic" OR "Laos" OR "Myanmar" OR "myanma" OR "Solomon islands" OR "Timor Leste" OR "Tuvalu*" OR "Vanuatu*" OR "Afghanistan" OR "afghan*" OR "Bangladesh*" OR "Bhutan*" OR "Nepal*" OR "Yemen*" OR "Haiti*" OR "landlocked developing nation*" OR "landlocked developing stat*" OR "land-locked developing nation*" OR "land-locked developing stat*" OR "Armenia*" OR "Azerbaijan*" OR "Bolivia*" OR "Botswana*" OR "Eswatini" OR "Kazakhstan*" OR "Kyrgyz*" OR "Mongolia*" OR "North Macedonia" OR "Paraguay" OR "Moldova*" OR "Tajikistan" OR "Turkmenistan" OR "Uzbekistan" OR "Zimbabwe*" OR "small island developing nation*" OR "small-island developing state*" OR "Antigua and Barbuda" OR "Bahamas" OR "Barbados" OR "Belize" OR "Cabo Verde" OR "Cape Verde" OR "Cuba" OR "Dominica*" OR "Dominican Republic" OR "Micronesia*" OR "Fiji" OR "Grenada*" OR "Guyana*" OR "Jamaica*" OR "Maldives" OR "Marshall Islands" OR "Mauritius" OR "Nauru*" OR "Palau*" OR "Papua New Guinea*" OR "Saint Kitts and Nevis" OR "Saint Lucia*" OR "Vincent and the Grenadines" OR "Samoa*" OR "Seychelles" OR "Singapore*" OR "Solomon Islands" OR "Surinam*" OR "Timor-Leste" OR "Tonga*" OR "Trinidad and Tobago" OR "Tuvalu*" OR "Vanuatu*" OR "Anguilla*" OR "Aruba*" OR "Bermuda*" OR "Cayman Islands" OR "Cook Islands" OR "Curacao" OR "French Polynesia*" OR "Guadeloupe*" OR "Guam" OR "Martinique" OR "Montserrat" OR "New Caledonia*" OR "Niue" OR "Puerto Rico" OR "Sint Maarten" OR "Turks and Caicos" OR "Virgin Islands" 
+    )    
+)
+```
+
 
 ### Target 9.b
 
@@ -379,6 +574,19 @@ TS=
     )
 ) 
 ```
+```whoosh
+(
+    (increas* OR strengthen* OR improv* OR restor* OR enhanc* OR upgrad* OR "scale* up" OR build* OR "capacity building" OR "capacity development" OR expand* OR accelerat* OR advance* OR develop* OR encourag* OR facilitat* OR promot* OR implement* OR adopt* OR establish* OR design* OR plan* OR pathway* OR roadmap OR "way to" OR attain* OR achiev*
+    )
+    ~15
+    ("technology development" OR "research and development" OR "R&D" OR "research & development" OR "research and innovation" OR innovation OR "domestic technology" OR "policy environment" OR "industrial diversification" OR "value addition"
+    )  
+    AND 
+    ("least developed countr*" OR "least developed nation$" OR "developing countr*" OR "developing nation$" OR "developing states" OR "developing world" OR "less developed countr*" OR "less developed nation$" OR "under developed countr*" OR "under developed nation$" OR "underdeveloped countr*" OR "underdeveloped nation$" OR "underserved countr*" OR "underserved nation$" OR "deprived countr*" OR "deprived nation$" OR "middle income countr*" OR "middle income nation$" OR "low income countr*" OR "low income nation$" OR "lower income countr*" OR "lower income nation$" OR "poor countr*" OR "poor nation$" OR "poorer countr*" OR "poorer nation$" OR "lmic" OR "lmics" OR "third world" OR "global south" OR "lami countr*" OR "transitional countr*" OR "emerging economies" OR "emerging nation$" OR "Angola*" OR "Benin" OR "beninese" OR "Burkina Faso" OR "Burkina fasso" OR "burkinese" OR "burkinabe" OR "Burundi*" OR "Central African Republic" OR "Chad" OR "Comoros" OR "comoro islands" OR "iles comores" OR "Congo" OR "congolese" OR "Djibouti*" OR "Eritrea*" OR "Ethiopia*" OR "Gambia*" OR "Guinea" OR "Guinea-Bissau" OR "guinean" OR "Lesotho" OR "lesothan*" OR "Liberia*" OR "Madagasca*" OR "Malawi*" OR "Mali" OR "malian" OR "Mauritania*" OR "Mozambique" OR "mozambican$" OR "Niger" OR "Rwanda*" OR "Sao Tome and Principe" OR "Senegal*" OR "Sierra Leone*" OR "Somalia*" OR "South Sudan" OR "Sudan" OR "sudanese" OR "Togo" OR "togolese" OR "tongan" OR "Uganda*" OR "Tanzania*" OR "Zambia*" OR "Cambodia*" OR "Kiribati*" OR "Lao People’s democratic republic" OR "Laos" OR "Myanmar" OR "myanma" OR "Solomon islands" OR "Timor Leste" OR "Tuvalu*" OR "Vanuatu*" OR "Afghanistan" OR "afghan$" OR "Bangladesh*" OR "Bhutan*" OR "Nepal*" OR "Yemen*" OR "Haiti*" OR "Antigua and Barbuda" OR "Antigua & Barbuda" OR "antiguan$" OR "Bahamas" OR "Bahrain" OR "Barbados" OR "Belize" OR "Cabo Verde" OR "Cape Verde" OR "Comoros" OR "comoro islands" OR "iles comores" OR "Cuba" OR "cuban$" OR "Dominica*" OR "Dominican Republic" OR "Micronesia*" OR "Fiji" OR "fijian$" OR "Grenada*" OR "Guinea-Bissau" OR "Guyana*" OR "Haiti*" OR "Jamaica*" OR "Kiribati*" OR "Maldives" OR "maldivian$" OR "Marshall Islands" OR "Mauritius" OR "mauritian$" OR "Nauru*" OR "Palau*" OR "Papua New Guinea*" OR "Saint Kitts and Nevis" OR "st kitts and nevis" OR "Saint Lucia*" OR "St Lucia*" OR "Vincent and the Grenadines" OR "Vincent & the Grenadines" OR "Samoa*" OR "Sao Tome" OR "Seychelles" OR "seychellois*" OR "Singapore*" OR "Solomon Islands" OR "Surinam*" OR "Timor-Leste" OR "timorese" OR "Tonga*" OR "Trinidad and Tobago" OR "Trinidad & Tobago" OR "trinidadian$" OR "tobagonian$" OR "Tuvalu*" OR "Vanuatu*" OR "Anguilla*" OR "Aruba*" OR "Bermuda*" OR "Cayman Islands" OR "Northern Mariana$" OR "Cook Islands" OR "Curacao" OR "French Polynesia*" OR "Guadeloupe*" OR "Guam" OR "Martinique" OR "Montserrat" OR "New Caledonia*" OR "Niue" OR "Puerto Rico" OR "puerto rican" OR "Sint Maarten" OR "Turks and Caicos" OR "Turks & Caicos" OR "Virgin Islands" OR "Afghanistan" OR "afghan*" OR "Armenia*" OR "Azerbaijan*" OR "Bhutan" OR "bhutanese" OR "Bolivia*" OR "Botswana*" OR "Burkina Faso" OR "Burundi" OR "Central African Republic" OR "Chad" OR "Eswatini" OR "eswantian" OR "Ethiopia*" OR "Kazakhstan*" OR "kazakh" OR "Kyrgyzstan" OR "Kyrgyz*" OR "kirghizia" OR "kirgizstan" OR "Lao People’s Democratic Republic" OR "Laos" OR "Lesotho" OR "Malawi" OR "malawian" OR "Mali" OR "Mongolia*" OR "Nepal*" OR "Niger" OR "North Macedonia" OR "Republic of Macedonia" OR "Paraguay" OR "Moldova*" OR "Rwanda$" OR "South Sudan" OR "sudanese" OR "Swaziland" OR "Tajikistan" OR "tadjikistan" OR "tajikistani$" OR "Turkmenistan" OR "Uganda*" OR "Uzbekistan" OR "uzbekistani$" OR "Zambia" OR "zambian$" OR "Zimbabwe*" OR "albania*" OR "algeria*" OR "angola*" OR "argentina*" OR "azerbaijan*" OR "bahrain*" OR "belarus*" OR "byelarus*" OR "belorussia" OR "belize*" OR "honduras" OR "honduran" OR "dahomey" OR "bosnia*" OR "herzegovina*" OR "botswana*" OR "bechuanaland" OR "brazil*" OR "brasil*" OR "bulgaria*" OR "upper volta" OR "kampuchea" OR "khmer republic" OR "cameroon*" OR "cameroun" OR "ubangi shari" OR "chile*" OR "china" OR "chinese" OR "colombia*" OR "costa rica*" OR "cote d’ivoire" OR "cote divoire" OR "cote d ivoire" OR "ivory coast" OR "croatia*" OR "cyprus" OR "cypriot" OR "czech" OR "ecuador*" OR "egypt*" OR "united arab republic" OR "el salvador*" OR "estonia*" OR "eswatini" OR "swaziland" OR "swazi" OR "gabon" OR "gabonese" OR "gabonaise" OR "gambia*" OR "ghana*" OR "gibralta*" OR "greece" OR "greek" OR "honduras" OR "honduran$" OR "hungary" OR "hungarian$" OR "india" OR "indian$" OR "indonesia*" OR "iran" OR "iranian$" OR "iraq" OR "iraqi$" OR "isle of man" OR "jordan" OR "jordanian$" OR "kenya*" OR "korea*" OR "kosovo" OR "kosovan$" OR "latvia*" OR "lebanon" OR "lebanese" OR "libya*" OR "lithuania*" OR "macau" OR "macao" OR "macanese" OR "malagasy" OR "malaysia*" OR "malay federation" OR "malaya federation" OR "malta" OR "maltese" OR "mauritania" OR "mauritanian$" OR "mexico" OR "mexican$" OR "montenegr*" OR "morocco" OR "moroccan$" OR "namibia*" OR "netherlands antilles" OR "nicaragua*" OR "nigeria*" OR "oman" OR "omani$" OR "muscat" OR "pakistan*" OR "panama*" OR "papua new guinea*" OR "peru" OR "peruvian$" OR "philippine$" OR "philipine$" OR "phillipine$" OR "phillippine$" OR "filipino$" OR "filipina$" OR "poland" OR "polish" OR "portugal" OR "portugese" OR "romania*" OR "russia" OR "russian$" OR "polynesia*" OR "saudi arabia*" OR "serbia*" OR "slovakia*" OR "slovak republic" OR "slovenia*" OR "melanesia*" OR "south africa*" OR "sri lanka*" OR "dutch guiana" OR "netherlands guiana" OR "syria" OR "syrian$" OR "thailand" OR "thai" OR "tunisia*" OR "ukraine" OR "ukrainian$" OR "uruguay*" OR "venezuela*" OR "vietnam*" OR "west bank" OR "gaza" OR "palestine" OR "palestinian$" OR "yugoslavia*" OR "turkish" OR "turkey" OR "georgia*"
+    )
+)
+```
+
 
 ### Target 9.c
 
@@ -408,6 +616,16 @@ TS=
 )  
 
 ```
+```whoosh
+(
+    ("increas*" OR "strengthen*" OR "improv*" OR "restor*" OR "enhanc*" OR "better" OR "more efficient*" OR "more effectiv*" OR "higher" OR "upgrad*" OR "scal* up" OR "build*" OR "build* capacity" OR "capacity building" OR "capacity development" OR "expand" OR "expansion*" OR "accelerat*" OR "advance" OR "advancing" OR "develop" OR "developing" OR "encourag*" OR "facilitat*" OR "promot*" OR "overcome" OR "ensure" OR "attain*" OR "achiev*"
+    )   
+        ~15 ("Internet" OR "internet connection" OR "mobile network" OR "mobile broadband" OR "access to information" OR "access to internet" OR "communication technology" OR "ICT" OR "information and communication technology" OR "digital infrastructure" OR "telecommunication" OR "telecom network" OR "broadband" OR "wireless network" OR "connectivity" OR "affordable internet" OR "low-cost internet" OR "cheap internet" OR "internet affordability" OR "digital divide" OR "universal access" OR "inclusive access" OR "internet penetration" OR "connectivity gap" OR "2G" OR "3G" OR "4G" OR "LTE" OR "third generation" OR "second generation" OR "low bandwidth" OR "slow internet" OR "limited connectivity" OR "basic mobile network" OR "poor connectivity" OR "low-speed internet")  
+    AND ("least developed countr*" OR "least developed nation$" OR "Angola*" OR "Benin" OR "beninese" OR "Burkina Faso" OR "Burkina fasso" OR "burkinese" OR "burkinabe" OR "Burundi*" OR "Central African Republic" OR "Chad" OR "Comoros" OR "comoro islands" OR "iles comores" OR "Congo" OR "congolese" OR "Djibouti*" OR "Eritrea*" OR "Ethiopia*" OR "Gambia*" OR "Guinea" OR "Guinea-Bissau" OR "guinean" OR "Lesotho" OR "lesothan*" OR "Liberia*" OR "Madagasca*" OR "Malawi*" OR "Mali" OR "malian" OR "Mauritania*" OR "Mozambique" OR "mozambican$" OR "Niger" OR "Rwanda*" OR "Sao Tome and Principe" OR "Senegal*" OR "Sierra Leone*" OR "Somalia*" OR "South Sudan" OR "Sudan" OR "sudanese" OR "Togo" OR "togolese" OR "tongan" OR "Uganda*" OR "Tanzania*" OR "Zambia*" OR "Cambodia*" OR "Kiribati*" OR "Lao People’s democratic republic" OR "Laos" OR "Myanmar" OR "myanma" OR "Solomon islands" OR "Timor Leste" OR "Tuvalu*" OR "Vanuatu*" OR "Afghanistan" OR "afghan$" OR "Bangladesh*" OR "Bhutan*" OR "Nepal*" OR "Yemen*" OR "Haiti*"
+    )
+)
+```
+
 
 ## 4. Contributions
 
